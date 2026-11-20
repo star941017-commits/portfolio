@@ -3793,7 +3793,7 @@ section.slide, section.slide *{word-break:keep-all;overflow-wrap:break-word}
 #p2tip b{display:block;font-size:11.5px;color:#9cc2ff;margin-bottom:2px}
 #p2tip i{display:block;font-style:normal;color:#c9d3e6;margin-top:3px;font-size:10px}
 @media print{#p2tip{display:none!important}.p2seg.hl{transform:none;filter:none}.p2row.hl{background:none}}
-</style></head><body class="submit"><div id="fitwrap"><div class="deck">
+</style><style id="navfix">#nvbar .full{width:248px!important}#nv-panel .m{white-space:nowrap}#nv-panel .m em{flex:none}</style></head><body class="submit"><div id="fitwrap"><div class="deck">
 <style id="v79">
 [data-id="M8-CASEC"].v5 .cr54{margin-top:6px;padding:4px 12px}
 [data-id="M8-CASEC"].v5 .cr54 .cr-h{margin-bottom:2px}
@@ -4511,7 +4511,7 @@ button:focus-visible,[data-go]:focus-visible,[data-pv]:focus-visible,.pv-box:foc
 <div id="cyctip"></div>
 <nav id="nvbar" aria-label="포트폴리오 페이지 탐색">
   <div class="mini"><button id="nv-top" title="처음으로" aria-label="처음 페이지로">⌂</button><button class="menu" id="nv-menu" title="바로가기 목록" aria-label="바로가기 메뉴" aria-expanded="false" aria-controls="nv-panel">≡</button><button id="nv-prev" title="이전 (←)" aria-label="이전 페이지">‹</button><span class="pos" id="nv-pos" aria-live="polite">1</span><button id="nv-next" title="다음 (→)" aria-label="다음 페이지">›</button><button id="nv-back" title="이동 전 위치로" aria-label="이동 전 위치로 돌아가기" disabled>↩</button></div>
-  <div class="full" id="nv-panel"><div class="ttl">바로가기</div><button class="m" data-go="pg-3"><i style="background:#4A7AE6">1</i>홈페이지·뉴스룸<em>p3–7</em></button><button class="m" data-go="pg-8"><i style="background:#1F57D6">2</i>콘텐츠 기획<em>p8–10</em></button><button class="m" data-go="pg-11"><i style="background:#12409F">3</i>전시·고객 행사<em>p11–12</em></button><button class="m" data-go="pg-13"><i style="background:#0B2A6F">4</i>산업별 캠페인·대외협력<em>p13–15</em></button><button class="m sub" data-go="pg-2"><i>※</i>목차 · B2B 마케팅 경험<em>p2</em></button></div>
+  <div class="full" id="nv-panel"><div class="ttl">바로가기</div><button class="m" data-go="pg-3"><i style="background:#4A7AE6">1</i>홈페이지·뉴스룸<em>p3–7</em></button><button class="m" data-go="pg-8"><i style="background:#1F57D6">2</i>콘텐츠 기획<em>p8–10</em></button><button class="m" data-go="pg-11"><i style="background:#12409F">3</i>전시·고객 행사<em>p11–12</em></button><button class="m" data-go="pg-13"><i style="background:#0B2A6F">4</i>산업별 캠페인·대외협력<em>p13–15</em></button><button class="m sub" data-go="pg-2"><i>※</i>프로젝트 목차<em>p2</em></button></div>
 </nav>
 <script>
 (function(){
@@ -4529,8 +4529,8 @@ button:focus-visible,[data-go]:focus-visible,[data-pv]:focus-visible,.pv-box:foc
   document.addEventListener('click',function(e){var t=e.target.closest('[data-go]');if(t){e.preventDefault();go(t.getAttribute('data-go'));setOpen(false);}});
   document.getElementById('nv-back').onclick=function(){if(!stack.length)return;var y=stack.pop();window.scrollTo({top:y,behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth')});if(!stack.length)this.disabled=true;};
   document.getElementById('nv-top').onclick=function(){stack.push(window.scrollY);document.getElementById('nv-back').disabled=false;window.scrollTo({top:0,behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth')});};
-  document.getElementById('nv-prev').onclick=function(){pages[Math.max(0,cur()-1)].scrollIntoView({behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'),block:'center'});};
-  document.getElementById('nv-next').onclick=function(){pages[Math.min(pages.length-1,cur()+1)].scrollIntoView({behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'),block:'center'});};
+  document.getElementById('nv-prev').onclick=function(){stack.push(window.scrollY);document.getElementById('nv-back').disabled=false;pages[Math.max(0,cur()-1)].scrollIntoView({behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'),block:'center'});};
+  document.getElementById('nv-next').onclick=function(){stack.push(window.scrollY);document.getElementById('nv-back').disabled=false;pages[Math.min(pages.length-1,cur()+1)].scrollIntoView({behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'),block:'center'});};
   document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.closest('button,a,input,textarea,select,[role=button],[contenteditable]'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();document.getElementById('nv-next').click();}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();document.getElementById('nv-prev').click();}else if(e.key==='Home'){document.getElementById('nv-top').click();}});
   var pos=document.getElementById('nv-pos');function upd(){pos.textContent=(cur()+1);pos.title=(cur()+1)+' / '+pages.length;}window.addEventListener('scroll',upd);upd();
   var nv=document.getElementById('nvbar'),idleT=null,holdT=null;
