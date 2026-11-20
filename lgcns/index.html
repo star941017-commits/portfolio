@@ -4610,7 +4610,7 @@ function segOf(g){return document.querySelector('.p2seg[data-seg="'+g+'"]');}
 function on(g,v){var r=rowOf(g),s=segOf(g);if(r)r.classList.toggle('hl',v);if(s)s.classList.toggle('hl',v);}
 function place(x,y){var w=tip.offsetWidth||240,hh=tip.offsetHeight||70;tip.style.left=Math.max(8,Math.min(x+14,innerWidth-w-8))+'px';tip.style.top=Math.max(8,Math.min(y+14,innerHeight-hh-8))+'px';}
 document.querySelectorAll('.p2seg').forEach(function(s){var g=s.getAttribute('data-seg'),r=rowOf(g);if(!r)return;
- var k=r.querySelector('.p2k').textContent,n=r.querySelector('.n').textContent,d=r.querySelector('.p2d').textContent,p=r.querySelector('.p2pg').textContent;
+ var k=r.querySelector('.p2k>span').textContent,n=r.querySelector('.n').textContent,d=r.querySelector('.p2d').textContent,p=r.querySelector('.p2pg').textContent;
  s.addEventListener('mouseenter',function(e){on(g,true);tip.innerHTML='<b>'+n+' '+k+'</b>'+d+'<i>'+p+' — 클릭하면 이동</i>';tip.style.opacity=1;place(e.clientX,e.clientY);});
  s.addEventListener('mousemove',function(e){place(e.clientX,e.clientY);});
  s.addEventListener('mouseleave',function(){on(g,false);tip.style.opacity=0;});});
